@@ -361,9 +361,15 @@ export default function Consult() {
                                     <input
                                         type="text"
                                         placeholder="Nhập tin nhắn..."
-                                        className="flex-1 p-2 border rounded-lg mx-2"
+                                        className="flex-1 p-2 border rounded-lg mx-2 focus:outline-none focus:ring-2 "
                                         value={newMessage}
                                         onChange={(e) => setNewMessage(e.target.value)}
+                                        onKeyDown={(e) => {
+                                            if (e.key === "Enter") {
+                                                e.preventDefault(); // Ngăn việc xuống dòng
+                                                sendMessage(); // Gọi hàm gửi tin nhắn
+                                            }
+                                        }}
                                     />
                                     <button onClick={sendMessage}>
                                         <FontAwesomeIcon icon={faPaperPlane} size="lg" className="text-blue-600" />
