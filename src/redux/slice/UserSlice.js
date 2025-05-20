@@ -50,7 +50,8 @@ const UserSlice = createSlice({
             state.errorResponse = null;
         });
         builder.addCase(login.fulfilled, (state, action) => {
-            localStorage.setItem('token', action.payload.data);
+            localStorage.setItem('token', action.payload.data.accessToken);
+            localStorage.setItem('refreshToken', action.payload.data.refreshToken);
             state.errorResponse = null;
         });
         builder.addCase(login.rejected, (state, action) => {
